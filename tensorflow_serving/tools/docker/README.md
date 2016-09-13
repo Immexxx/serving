@@ -1,6 +1,6 @@
 Files for using the [Docker](http://www.docker.com) container system.
 
-< G instructions start: 
+G instructions start: 
 
 Which containers exist? 
 
@@ -36,7 +36,7 @@ cd ..
 
 bazel test tensorflow_serving/...
 
-G instructions end > 
+G instructions end 
 
 KAR instructions start: 
 
