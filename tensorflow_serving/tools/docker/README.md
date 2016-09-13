@@ -62,21 +62,21 @@ KAR instructions start:
 
 5. NOTES: This docker container just installs the base image and the dependencies - NOT EVERYTHING THAT YOU NEED 
 
-Run it: 
+  Run it: 
 
-docker run -it -p 8888:8888 -p 801:801 tf_serving /bin/bash
+  docker run -it -p 8888:8888 -p 801:801 tf_serving /bin/bash
 
 6. Verify: "docker ps": 
 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS        PORTS                   NAMES
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS        PORTS                   NAMES
 
-dfa56cdad66b        tf_serving          "/bin/bash"         14 seconds ago      Up 13 seconds       0.0.0.0:801->801/tcp,
+  dfa56cdad66b        tf_serving          "/bin/bash"         14 seconds ago      Up 13 seconds       0.0.0.0:801->801/tcp,
 
-0.0.0.0:8888->8888/tcp   zen_goldwasser
+  0.0.0.0:8888->8888/tcp   zen_goldwasser
 
 7. Get the actual code into the repo and then build it
 
-mkdir kardir; cd kardir; git clone --recurse-submodules https://github.com/tensorflow/serving
+  mkdir kardir; cd kardir; git clone --recurse-submodules https://github.com/tensorflow/serving
 
 8. Execute ./configure in /kardir/serving/tensorflow# ./configure 
 
@@ -84,7 +84,7 @@ mkdir kardir; cd kardir; git clone --recurse-submodules https://github.com/tenso
 
 10. To build the entire source tree: "bazel build tensorflow_serving/...  "
 
-(This takes about 2 hrs - approx) 
+  (This takes about 2 hrs - approx) 
 
 11. 
 
