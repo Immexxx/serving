@@ -52,13 +52,13 @@ KAR instructions start:
 
 4. Output of "docker images" after approx 10 mins: 
 
-$ docker images
+  $ docker images
 
-REPOSITORY                                                          TAG                 IMAGE ID            CREATED              SIZE
+  REPOSITORY                                                          TAG                 IMAGE ID            CREATED              SIZE
 
-tf_serving                                                        latest              2994115df913        About a minute ago   1.001 GB
+  tf_serving                                                        latest              2994115df913        About a minute ago   1.001 GB
 
-tf_bazel                                                          latest              04efb46c424d        10 days ago          2.738 GB
+  tf_bazel                                                          latest              04efb46c424d        10 days ago          2.738 GB
 
 5. NOTES: This docker container just installs the base image and the dependencies - NOT EVERYTHING THAT YOU NEED 
 
