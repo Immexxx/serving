@@ -2,7 +2,7 @@ Files for using the [Docker](http://www.docker.com) container system.
 
 < G instructions start: 
 
-<b> Which containers exist? </b>
+Which containers exist? 
 
 We currently maintain the following Dockerfiles:
 
