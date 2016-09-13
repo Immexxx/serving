@@ -1,1 +1,55 @@
 Files for using the [Docker](http://www.docker.com) container system.
+
+< G instructions start: 
+
+<b> Which containers exist? </b>
+
+We currently maintain the following Dockerfiles:
+
+Dockerfile.devel, which is a minimal VM with all of the dependencies needed to build TensorFlow Serving.
+
+Building a container
+
+run;
+
+docker build --pull -t $USER/tensorflow-serving-devel -f Dockerfile.devel .
+
+Running a container
+
+This assumes you have built the container.
+
+Dockerfile.devel: Use the development container to clone and test the TensorFlow Serving repository.
+
+Run the container;
+
+docker run -it $USER/tensorflow-serving-devel
+
+Clone, configure and test Tensorflow Serving in the running container;
+
+git clone --recurse-submodules https://github.com/tensorflow/serving
+
+cd serving/tensorflow
+
+./configure
+
+cd ..
+
+bazel test tensorflow_serving/...
+
+G instructions end > 
+
+KAR instructions start: 
+
+1. git clone this_repo 
+
+2. Rename this file to Dockerfile 
+
+3. docker build --pull -t tf_serving . 
+
+4. 
+
+
+
+
+
+
