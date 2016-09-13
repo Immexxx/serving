@@ -46,8 +46,17 @@ KAR instructions start:
 
 3. docker build --pull -t tf_serving . 
 
-4. 
+4. Output of "docker images" after approx 10 mins: 
 
+$ docker images
+
+REPOSITORY                                                          TAG                 IMAGE ID            CREATED              SIZE
+
+tf_serving                                                        latest              2994115df913        About a minute ago   1.001 GB
+
+tf_bazel                                                          latest              04efb46c424d        10 days ago          2.738 GB
+
+5.
 
 
 
