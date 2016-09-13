@@ -15,41 +15,36 @@
 
 #!/usr/bin/env python2.7
 
-"""Send JPEG image to tensorflow_model_server loaded with inception model.
-"""
+"""Manual test client for tensorflow_model_server."""
 
 # This is a placeholder for a Google-internal import.
 
 from grpc.beta import implementations
 import tensorflow as tf
 
+from tensorflow.core.framework import types_pb2
+from tensorflow.python.platform import flags
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2
 
 
-tf.app.flags.DEFINE_string('server', 'localhost:9000',
+tf.app.flags.DEFINE_string('server', 'localhost:8500',
                            'inception_inference service host:port')
-tf.app.flags.DEFINE_string('image', '', 'path to image in JPEG format')
 FLAGS = tf.app.flags.FLAGS
 
 
-NUM_CLASSES = 5
-
-
 def main(_):
+  # Prepare request
+  request = predict_pb2.PredictRequest()
+  request.model_spec.name = 'default'
+  request.inputs['x'].dtype = types_pb2.DT_FLOAT
+  request.inputs['x'].float_val.append(2.0)
+  request.output_filter.append('y')
+  # Send request
   host, port = FLAGS.server.split(':')
   channel = implementations.insecure_channel(host, int(port))
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
-  # Send request
-  with open(FLAGS.image, 'rb') as f:
-    # See inception_inference.proto for gRPC request/response details.
-    data = f.read()
-    request = predict_pb2.PredictRequest()
-    request.model_spec.name = 'inception'
-    request.inputs['images'].CopyFrom(
-        tf.contrib.util.make_tensor_proto(data, shape=[1]))
-    result = stub.Predict(request, 10.0)  # 10 secs timeout
-    print result
+  print stub.Predict(request, 5.0)  # 5 secs timeout
 
 
 if __name__ == '__main__':
