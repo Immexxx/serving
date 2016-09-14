@@ -94,26 +94,26 @@ KAR instructions start:
 
 12. /kardir/serving# bazel build //tensorflow_serving/example:mnist_export
 
-(See: https://tensorflow.github.io/serving/serving_basic.html)
+ (See: https://tensorflow.github.io/serving/serving_basic.html)
 
 Output: 
 
-INFO: Found 1 target...
-[0 / 2] BazelWorkspaceStatusAction stable-status.txt
-Target //tensorflow_serving/example:mnist_export up-to-date:
-  bazel-bin/tensorflow_serving/example/mnist_export
-INFO: Elapsed time: 44.046s, Critical Path: 22.72s
+ INFO: Found 1 target...
+ [0 / 2] BazelWorkspaceStatusAction stable-status.txt
+ Target //tensorflow_serving/example:mnist_export up-to-date:
+   bazel-bin/tensorflow_serving/example/mnist_export
+ INFO: Elapsed time: 44.046s, Critical Path: 22.72s
 
 
 13.  /kardir/serving# bazel-bin/tensorflow_serving/example/mnist_export /tmp/mnist_model
 
   Output: 
 
-training accuracy 0.9092
-Done training!
-Exporting trained model to /tmp/mnist_model
-Done exporting!
-root@dfa56cdad66b:/kardir/serving# ls /tmp/mnist_model 
+ training accuracy 0.9092
+ Done training!
+ Exporting trained model to /tmp/mnist_model
+ Done exporting!
+ root@dfa56cdad66b:/kardir/serving# ls /tmp/mnist_model 
 
 
   Result of step 13: "With that, your TensorFlow model is exported and ready to be loaded!"
