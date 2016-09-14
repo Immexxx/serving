@@ -157,6 +157,10 @@ KAR instructions start:
  Inference error rate: 91.5%
  
  DA: This confirms that the server loads and runs the trained model successfully!
+ 
+ You can do a Cntrl-C on the server terminal to stop the server 
+ 
+ 
 
   
 
