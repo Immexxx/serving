@@ -96,7 +96,7 @@ KAR instructions start:
 
  (See: https://tensorflow.github.io/serving/serving_basic.html)
 
-Output: 
+ Output: 
 
  INFO: Found 1 target...
  [0 / 2] BazelWorkspaceStatusAction stable-status.txt
