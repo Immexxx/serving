@@ -155,7 +155,8 @@ KAR instructions start:
  E0914 22:21:55.414200872    7583 chttp2_transport.c:1810]    close_transport: {"created":"@1473891715.414171707","description":"FD shutdown","file":"src/core/lib/iomgr/ev_poll_posix.c","file_line":427}
 
  Inference error rate: 91.5%
-
+ 
+ DA: This confirms that the server loads and runs the trained model successfully!
 
   
 
