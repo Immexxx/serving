@@ -161,8 +161,84 @@ KAR instructions start:
  You can do a Cntrl-C on the server terminal to stop the server. ps -ef will tell you if the server is running or not. 
  
  
- 
- 
+17. Running other models: Download the model, build and export it - bazel-bin it
+  
+  Export Inception model in container (see  :https://tensorflow.github.io/serving/serving_inception if req) 
+  
+  17.a: root@dfa56cdad66b:/kardir/serving# curl -O http://download.tensorflow.org/models/image/imagenet/inception-v3-2016-03-01.tar.gz
+  
+  17.b: tar xzf inception-v3-2016-03-01.tar.gz
+  
+  17.c: bazel-bin/tensorflow_serving/example/inception_export --checkpoint_dir=inception-v3 --export_dir=inception-export
+
+  (Will see: WARNING:tensorflow:tf.op_scope(values, name, default_name) is deprecated, use tf.name_scope(name, default_name, values)
+  Successfully loaded model from inception-v3/model.ckpt-157585 at step=157585.
+  Successfully exported model to inception-export)
+  
+  
+18. Once the model is there, start the server: 
+
+  /kardir/serving# bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=9000 --model_name=inception --model_base_path=inception-export       
+  
+  Output: tensorflow_serving/model_servers/main.cc:171] Running ModelServer at 0.0.0.0:9000 ...
+  
+19. Now that the server is running, you can use a client to send requests and get responses from the server 
+
+  bazel-bin/tensorflow_serving/example/inception_client --server=localhost:9000 --image=/kardir/visionPics/snowdogs.jpg
+  
+  bazel-bin/tensorflow_serving/example/inception_client --server=localhost:9000 --image=/kardir/visionPics/street.jpg
+  
+  Output: 
+  
+  *******
+  
+  D0915 17:50:30.040548009    8674 ev_posix.c:101]             Using polling engine: poll
+
+ outputs {
+  key: "classes"
+  value {
+    dtype: DT_STRING
+    tensor_shape {
+      dim {
+        size: 1
+      }
+      dim {
+        size: 5
+      }
+    }
+    string_val: "dogsled, dog sled, dog sleigh"
+    string_val: "Eskimo dog, husky"
+    string_val: "Siberian husky"
+    string_val: "malamute, malemute, Alaskan malamute"
+    string_val: "snowmobile"
+  }
+}
+outputs {
+  key: "scores"
+  value {
+    dtype: DT_FLOAT
+    tensor_shape {
+      dim {
+        size: 1
+      }
+      dim {
+        size: 5
+      }
+    }
+    float_val: 9.57605266571
+    float_val: 7.05985927582
+    float_val: 5.23411989212
+    float_val: 2.50853919983
+    float_val: 2.42705345154
+  }
+}
+
+E0915 17:50:38.418339608    8674 chttp2_transport.c:1810]    close_transport: {"created":"@1473961838.418305549","description":"FD shutdown","file":"src/core/lib/iomgr/ev_poll_posix.c","file_line":427}
+
+********
+  
+  
+  
 
   
 
