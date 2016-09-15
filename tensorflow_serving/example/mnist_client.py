@@ -90,6 +90,7 @@ def do_inference(hostport, work_dir, concurrency, num_tests):
         sys.stdout.write('.')
         sys.stdout.flush()
         response = numpy.array(result_future.result().outputs['scores'])
+        #argmax => Returns the indices of the maximum values along an axis.
         prediction = numpy.argmax(response)
         if label != prediction:
           result['error'] += 1
@@ -106,7 +107,7 @@ def do_inference(hostport, work_dir, concurrency, num_tests):
       while result['active'] == concurrency:
         cv.wait()
       result['active'] += 1
-    #Kar: Call made to the server here! 'stub' holds the server config 
+    #Kar: Call setup (made) to the server here! 'stub' holds the server config 
     result_future = stub.Predict.future(request, 5.0)  # 5 seconds
     result_future.add_done_callback(
         lambda result_future, l=label[0]: done(result_future, l))  # pylint: disable=cell-var-from-loop
