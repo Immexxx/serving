@@ -23,6 +23,14 @@ such test images to get predictions, and calculates the inference error rate.
 Typical usage example:
 
     mnist_client.py --num_tests=100 --server=localhost:9000
+    
+    
+Kar: 
+    Code Flow: 
+        result[done] holds the number of test cases executed 
+        result[error] holds the number of test cases that had an error 
+        result[active] holds the max number of calls you can make concurrently. Set to 1 by default 
+
 """
 
 import sys
@@ -98,6 +106,7 @@ def do_inference(hostport, work_dir, concurrency, num_tests):
       while result['active'] == concurrency:
         cv.wait()
       result['active'] += 1
+    #Kar: Call made to the server here! 'stub' holds the server config 
     result_future = stub.Predict.future(request, 5.0)  # 5 seconds
     result_future.add_done_callback(
         lambda result_future, l=label[0]: done(result_future, l))  # pylint: disable=cell-var-from-loop
