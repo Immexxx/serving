@@ -184,7 +184,7 @@ KAR instructions start:
   
 19. Now that the server is running, you can use a client to send requests and get responses from the server 
 
-  bazel-bin/tensorflow_serving/example/inception_client --server=localhost:9000 --image=/kardir/visionPics/snowdogs.jpg
+  bazel-bin/tensorflow_serving/example/inception_client --server=localhost:9000 --image=/kardir/visionPics/snowdogs.jpg  (Examples similar to this: http://ouralaskanadventures.com/wp-content/uploads/2015/04/Sled-Dogs.jpg) 
   
   bazel-bin/tensorflow_serving/example/inception_client --server=localhost:9000 --image=/kardir/visionPics/street.jpg
   
