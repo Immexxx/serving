@@ -190,7 +190,7 @@ KAR instructions start:
   
   Output: 
   
-  *******
+   *******
   
   D0915 17:50:30.040548009    8674 ev_posix.c:101]             Using polling engine: poll
 
@@ -212,8 +212,8 @@ KAR instructions start:
     string_val: "malamute, malemute, Alaskan malamute"
     string_val: "snowmobile"
   }
-}
-outputs {
+ }
+ outputs {
   key: "scores"
   value {
     dtype: DT_FLOAT
@@ -233,9 +233,9 @@ outputs {
   }
 }
 
-E0915 17:50:38.418339608    8674 chttp2_transport.c:1810]    close_transport: {"created":"@1473961838.418305549","description":"FD shutdown","file":"src/core/lib/iomgr/ev_poll_posix.c","file_line":427}
+  E0915 17:50:38.418339608    8674 chttp2_transport.c:1810]    close_transport: {"created":"@1473961838.418305549","description":"FD shutdown","file":"src/core/lib/iomgr/ev_poll_posix.c","file_line":427}
 
-********
+ ********
   
   
   
